@@ -1,8 +1,3 @@
-// Show the current year in the footer
-var yearSpan = document.getElementById("current-year");
-var thisYear = new Date().getFullYear();
-yearSpan.textContent = thisYear;
-
 // Back to top button
 var backToTopButton = document.getElementById("back-to-top-btn");
 
