@@ -153,6 +153,35 @@ section h2 {
   text-transform: uppercase;
 }
 
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 12px;
+  margin: 0;
+  width: 48px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  color: #333333;
+  transition: opacity 0.15s ease;
+}
+
+.hamburger:hover {
+  opacity: 0.6;
+}
+
+.hamburger[aria-expanded="true"] {
+  color: #2f6fed;
+}
+
+.hamburger svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
 /* Main content spacing */
 main {
   max-width: 900px;
@@ -402,15 +431,85 @@ footer {
 
 /* Simple media query for smaller screens */
 @media (max-width: 600px) {
+  header {
+    position: relative;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  #about {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0;
+  }
+
   .about-flex {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
+    order: 0;
+  }
+
+  .cert-list {
+    order: 1;
+  }
+
+  .about-bg-portrait {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    width: 400px;
+    max-width: 100%;
+    z-index: auto;
+    order: 2;
+    margin-top: 24px;
+    float: none;
   }
 
   .nav-list {
+    position: absolute;
+    top: 100%;
+    right: 20px;
+    display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 0;
+    background-color: #f4f4f4;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    padding: 8px 0;
+    min-width: 220px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  .nav-list.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .nav-list li {
+    width: 100%;
+  }
+
+  .nav-list a {
+    display: block;
+    padding: 12px 20px;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .nav-list a:hover {
+    background-color: #e8e8e8;
+    text-decoration: none;
   }
 }
 

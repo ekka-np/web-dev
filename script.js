@@ -48,3 +48,74 @@ function protectMedia() {
 }
 
 document.addEventListener("DOMContentLoaded", protectMedia);
+
+// Hamburger menu
+(function () {
+  var hamburger = document.getElementById("hamburger-btn");
+  var navList = document.getElementById("nav-list");
+  var header = document.querySelector("header");
+  var isOpen = false;
+
+  function openMenu() {
+    navList.classList.add("open");
+    hamburger.setAttribute("aria-expanded", "true");
+    hamburger.setAttribute("aria-label", "Close navigation menu");
+    isOpen = true;
+  }
+
+  function closeMenu() {
+    navList.classList.remove("open");
+    hamburger.setAttribute("aria-expanded", "false");
+    hamburger.setAttribute("aria-label", "Open navigation menu");
+    isOpen = false;
+    hamburger.focus();
+  }
+
+  hamburger.addEventListener("click", function () {
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  // Close on nav item click
+  var navLinks = navList.querySelectorAll("a");
+  for (var i = 0; i < navLinks.length; i++) {
+    navLinks[i].addEventListener("click", closeMenu);
+  }
+
+  // Close on outside click
+  document.addEventListener("click", function (e) {
+    if (isOpen && !header.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  // Close on Escape
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && isOpen) {
+      closeMenu();
+    }
+  });
+
+  // Trap focus within menu when open
+  navList.addEventListener("keydown", function (e) {
+    if (e.key !== "Tab") return;
+    var focusable = navLinks;
+    if (focusable.length === 0) return;
+    var first = focusable[0];
+    var last = focusable[focusable.length - 1];
+    if (e.shiftKey) {
+      if (document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      }
+    } else {
+      if (document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  });
+})();
