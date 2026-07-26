@@ -9,12 +9,6 @@ To create a clean, minimal portfolio that presents my academic background, profe
 
 This site is both a learning exercise and a functional showcase. I designed each section (About, Activity, Highlighted Work, Side Projects, Ideas) to practice structuring content with semantic HTML, styling with modular CSS, and making deliberate design choices around layout, color, and typography.
 
-### Key design choices
-
-- **Geist Mono** for body text and **Tomorrow** for headings to create clear typographic contrast
-- A restrained blue accent color (`#2f6fed`) used consistently for links and interactive elements
-- Responsive layout using flexbox and a single media query breakpoint
-- Absolute positioning for decorative background elements and footer placement
 
 ## What was covered
 
@@ -27,4 +21,4 @@ This site is both a learning exercise and a functional showcase. I designed each
 
 ## Notes
 
-This project intentionally keeps things simple. No frameworks, no build tools, just plain HTML, CSS, and a small amount of JavaScript for the back-to-top button and media protection.
+This project intentionally keeps things simple. No frameworks, no build tools, just plain HTML, CSS, and a small amount of JavaScript (For the back-to-top button and media protection).
